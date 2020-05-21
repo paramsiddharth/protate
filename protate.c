@@ -15,6 +15,8 @@
 
 #define NDEBUG
 
+// Global variables to be used
+
 FILE* inFile = NULL, 
 		* outFile = NULL;
 
@@ -35,7 +37,9 @@ Usage: protate FILE_IN N [-o] [FILE_OUT] [-p] [--h, --help, /?]\n\n\
  --h, --help, /?\tShow usage help.\n\n\
 Made with \u2661 by Param Siddharth.\n\n";
 
+// Handler for the arguments
 void handler(int acount, char* args[]) {
+	// Determining the number of arguments
 	if (acount<1) {
 		fprintf(stderr,"No arguments.\n\
 Use \"/?\" or \"--h\" for usage help.\n\n");
@@ -49,7 +53,7 @@ Use \"/?\" or \"--h\" for usage help.\n\n");
 				strcmp(arg,"/?") == 0
 			) {
 			helpWanted = true;
-			wprintf(L"%ls",usage);
+			wprintf(L"%ls",usage); // Displaying help
 			exit(EXIT_SUCCESS);
 		}
 		if (arg[0] == '-') {
@@ -363,21 +367,23 @@ Use \"/?\" or \"--h\" for usage help.\n\n");
 int main(int argc, char *argv[]) {
 	handler(argc - 1, argv + 1);
 	assert(inFile != NULL);
-	while (rotNum < 0) rotNum += 256;
+	while (rotNum < 0) rotNum += 256; // Converting the rotation order to a whole number
 	
 	if (toPreview) {
 		int c;
 		while ((c = getc(inFile)) != EOF) {
 			printf("%c", (char)(c+rotNum)%256);
-		}
+		} // Previewing the result
 	} else {
 		int c;
 		while ((c = getc(inFile)) != EOF) {
 			fprintf(outFile,"%c", (char)(c+rotNum)%256);
-		}
+		} // Writing the result to the output file
 	}
 	
+	// Closing the files
 	fclose(inFile);
 	if (outFile != NULL) fclose(outFile);
+	
 	return 0;
 }
