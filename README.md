@@ -1,7 +1,8 @@
 # PROTATE
 
 A command-line utility that rotates each character in an ASCII text file by a certain order. 
-The rotation mechanism is similar to [ROT13](https://en.wikipedia.org/wiki/ROT13). Here, each ASCII character is rotated by its ASCII value.
+The rotation mechanism is similar to [ROT13](https://en.wikipedia.org/wiki/ROT13). Here, each ASCII character is rotated by its ASCII value.  
+Read the [documentation](http://paramsiddharth.github.io/protate).
 
 # Usage
 
