@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0, shrink-to-fit=no'>
+        <title>
+            PROTATE - Documentation
+        </title>
+        <style>
+body {
+    font-family: Verdana;
+    font-size: 10px;
+    padding: 1px 2px;
+    width: 94%;
+    margin: 0 auto;
+    background-color: #FFFEFF;
+}
+
+code {
+    background-color: #EEEEEE;
+    padding: 0 2px;
+    margin: 0 2px;
+}
+
+.codeblock {
+    background-color: #EFFAEF;
+    width: 95%;
+    padding: 10px;
+    margin: 3px auto;
+    font-size: 1.2em;
+    font-family: monospace;
+}
+
+h1 {
+    color: #666;
+    font-size: 25px;
+}
+
+#protate {
+    font-size: 3em;
+    color: #333;
+}
+
+.footer {
+    font-size: 1.2em;
+}
+
+@keyframes exco {
+    0% {
+        font-size: 1.5em; left: -0.4em;
+        top: -0.4em;
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(180deg);
+        top: -0.6em;
+    }
+    50% {
+        font-size: 2.2em; left: -0.4em;
+        top: -0.5em;
+        transform: rotate(360deg);
+    }
+    75% {
+        top: -0.6em;
+        transform: rotate(540deg);
+    }
+    100% {
+        font-size: 1.5em; left: -0.4em;
+        top: -0.4em;
+        transform: rotate(720deg);
+    }
+}
+
+#hrtcont {
+    position: relative;
+}
+
+#hrt {
+    position: absolute;
+    animation: exco 1.5s linear /*cubic-bezier(.03,.73,.2,.99)*/ 0s infinite;
+}
+
+a, a:visited, a:active {
+    color: #FF1100;
+}
+
+a:hover {
+    color: #88EE00;
+}
+        </style>
+    </head>
+    <body>
+        <h1 id="protate">PROTATE</h1>
+        <p>
+            A command-line utility that rotates each character in an ASCII text file by a certain order. 
+            The rotation mechanism is similar to <a href='https://en.wikipedia.org/wiki/ROT13'>ROT13</a>. Here, each 
+            ASCII character is rotated by its ASCII value.
+        </p>
+        <h1 id="usage">Usage</h1>
+        <p class='codeblock'>protate FILE_IN N [-o] [FILE_OUT] [-p] [--h, --help, /?]</p>
+        <p>Parameters:</p>
+        <ul>
+            <li><code>FILE_IN</code>
+                : The input file.
+            </li>
+            <li><code>N</code>
+                : The number of ASCII character rotations to do in each character. A negative value would indicate negative rotation.
+            </li>
+            <li><code>-o FILE_OUT</code>
+                : Would output the result generated from <code>FILE_IN</code> to <code>FILE_OUT</code>. If omitted, the output would be written to <code>./a.out</code>.
+            </li>
+            <li><code>-p</code>
+                : Previews the output instead of saving it to a file.
+            </li>
+            <li><code>--h, --help, /?</code>
+                : Show usage help.
+            </li>
+        </ul>
+        <h1 id="building">Building</h1>
+        <p>To build it using <code>gcc</code> or <code>clang</code>, compile it via the command-line using <code>make</code>.<br><code>&gt; make protate</code></p>
+        <h1 id="examples">Examples</h1>
+        <p>The sample file story.txt contains the following text:  </p>
+        <div class='codeblock'>
+                The rose is red.<br/>
+                A girl is playing there.<br/>
+                There is a playground.<br/>
+                An aeroplane is in the sky.<br/>
+                Numbers are not allowed in the password.
+       </div>
+        <ul>
+            <li><code>&gt; protate 30 story.txt -o hiph0p</code><br>Generates text by rotating each character by order +30 and writes the output to <code>./hiph0p</code>.</li>
+            <li><code>&gt; protate hiph0p -30 -p</code><br>Decrypts the contents of <code>./hiph0p</code> by rotating it by order -30 and displays it instead of storing it due to the <code>-p</code> flag. If everything goes well, the output will be same as the original <code>story.txt</code> file.</li>
+            <li><code>&gt; protate hiph0p -30</code><br>Decrypts the contents of <code>./hiph0p</code> by rotating it by order -30, and, since no output file is specified, writes the output to <code>./a.out</code>. If everything goes well, the output will be same as the original <code>story.txt</code> file.</li>
+        </ul>
+        <p class='footer' style='text-align: center;'>
+            Made with &nbsp;&nbsp;&nbsp;<span id='hrtcont'><span id='hrt'>&#9825;</span></span>&nbsp;&nbsp;&nbsp; by <a href='http://www.paramsid.com'>Param</a>.
+        </p>
+    </body>
+</html>
